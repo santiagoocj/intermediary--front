@@ -1,0 +1,62 @@
+<div class="container mt-3">
+    <h2>DATOS REPRESENTANTE LEGAL DE LA EMPRESA</h2>
+    <h4>{{registroRepresentante}}</h4>
+    <form (ngSubmit)="crearRepresentante()">
+      <div class="mb-3 mt-3">
+        <label for="nit">Tipo documento:</label>
+        <input type="text" class="form-control" id="tipoDocumento" [(ngModel)]="representanteLegal.tipoDocumento" placeholder="Tipo de documento (CC)" name="tipoDocumento" required #tipoDocumento="ngModel">
+        <div class="alert alert-danger" *ngIf="tipoDocumento.invalid && (tipoDocumento.dirty || tipoDocumento.touched)">
+          <div *ngIf="tipoDocumento.errors.required">
+              El campo tipo documento es requerido
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="pwd">Documento:</label>
+        <input type="text" class="form-control" id="documento" [(ngModel)]="representanteLegal.documento" placeholder="Número de documento" name="documento" required #documento="ngModel">
+        <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
+          <div *ngIf="documento.errors.required">
+              El campo documento es requerido
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="pwd">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="representanteLegal.nombre" placeholder="Nombre del encargado" name="nombre" required #nombre="ngModel">
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors.required">
+              El campo nombre es requerido
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="pwd">Apellidos:</label>
+        <input type="text" class="form-control" id="apellidos"  [(ngModel)]="representanteLegal.apellidos" placeholder="Apellidos" name="apellidos" required #apellidos="ngModel">
+        <div class="alert alert-danger" *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+          <div *ngIf="apellidos.errors.required">
+              El campo apellidos es requerido
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="pwd">Celular:</label>
+        <input type="text" class="form-control" id="celular" [(ngModel)]="representanteLegal.celular" placeholder="Celular del representante" name="celular" required #celular="ngModel">
+        <div class="alert alert-danger" *ngIf="celular.invalid && (celular.dirty || celular.touched)">
+          <div *ngIf="celular.errors.required">
+              El campo celular es requerido
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="pwd">Email:</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="representanteLegal.email" placeholder="Email del representante" name="email" required #email="ngModel">
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors.required">
+              El campo email es requerido
+          </div>
+        </div>
+      </div>
+   
+      <button class="btn btn-color-primario" role="button">Registrar</button>
+    </form>
+  </div>
