@@ -23,7 +23,7 @@ export class RegistroEmpresaComponent implements OnInit {
     this.empresaService.preRegistro(this.empresa).subscribe(
       response => {
         console.log(response)
-        this.router.navigate(['/registro/empresa'])
+        this.router.navigate([`/registro/representante/${response.registro.id}`])
         Swal.fire('Registro Exitoso!', response.mensaje, 'success')
       }
     );
