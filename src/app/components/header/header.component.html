@@ -15,7 +15,7 @@
         </ul>
         <form class="d-flex" *ngIf="!auth.isAuthenticated()">
             <button class="btn btn-color-secundario" type="button" [routerLink]="['/login']">Login</button>
-            <button class="btn btn-color-primario" type="button">Sing Up</button>
+            <button class="btn btn-color-primario" type="button" [routerLink]="['/registro/empresa']">Sing Up</button>
         </form>
         <div class="btn-group"  *ngIf="auth.isAuthenticated()">
           <button type="button" class="btn btn-color-primario dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

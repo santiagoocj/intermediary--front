@@ -24,13 +24,4 @@ export class EmpresaService {
       })
     );
   }
-
-  registroRepresentante(representanteLegal: RepresentanteLegal): Observable<any>{
-    return this.http.post<any>(this.urlEndPoint + '/representantelegal' , representanteLegal).pipe(
-      catchError(e => {
-        Swal.fire('Error al crear', e.error.error, 'error');
-        return throwError(() => e);
-      })
-    );
-  }
 }

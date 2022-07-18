@@ -31,7 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
           Swal.fire('Acceso denegado', 'No tienes acceso a este recurso', 'warning');
           this.router.navigate(['/']);
         }
-        return throwError(() => new Error(e));
+        return throwError(() => e);
       })
     );
   }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepresentanteLegal } from '../../../models/empresa/representante-legal';
-import { EmpresaService } from '../../../services/empresa/empresa.service';
 import Swal from 'sweetalert2';
+import { RepresentanteService } from '../../../services/representante/representante.service';
+import { SolicitudRegistroService } from 'src/app/services/solicitud-registro/solicitud-registro.service';
 
 @Component({
   selector: 'app-representante-legal',
@@ -16,7 +17,10 @@ export class RepresentanteLegalComponent implements OnInit {
 
   private idRegistro: number;
 
-  constructor(private empresaService: EmpresaService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private representateService: RepresentanteService, 
+    private activatedRoute: ActivatedRoute, 
+    private router: Router,
+    private solicitudRegistro: SolicitudRegistroService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -25,13 +29,25 @@ export class RepresentanteLegalComponent implements OnInit {
   }
 
   public crearRepresentante(): any{
-    this.empresaService.registroRepresentante(this.representanteLegal).subscribe(
+    this.representateService.registroRepresentante(this.representanteLegal).subscribe(
       response => {
-        console.log(response)
-        this.router.navigate([`/registro/${this.idRegistro}/${response.cliente.id}`]);
         Swal.fire('Registro Representante', response.mensaje, 'success');
+        this.crearSolicitudRegistro(this.idRegistro, response.cliente.id);
       }
     )
+  }
+
+  private crearSolicitudRegistro(registro: number, representanteLegal: number) {
+    this.solicitudRegistro.registrarSolicitud(registro, representanteLegal).subscribe(
+      response => {
+        Swal.fire('¡Registro Exitoso!', response.mensaje, 'success');
+        this.redireccionarAInicio();
+      }
+    )
+  }
+
+  private redireccionarAInicio(){
+    this.router.navigate(['/']);
   }
 
 }
