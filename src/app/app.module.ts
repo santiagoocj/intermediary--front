@@ -12,6 +12,7 @@ import { RepresentanteLegalComponent } from './components/empresa/representante-
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './interceptors/token/token.interceptor';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
+import { UsuarioComponent } from './components/empresa/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
     FooterComponent,
     RegistroEmpresaComponent,
     RepresentanteLegalComponent,
-    LoginComponent
+    LoginComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
