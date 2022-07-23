@@ -1,0 +1,147 @@
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Administrador</span> </a>
+                <div class="nav_list"> 
+                    <a href="#" class="nav_link active" routerLink="homeAdm"> 
+                        <i class='bx bx-grid-alt nav_icon'> </i>                     
+                        <span class="nav_name">Solicitudes</span>            
+                    </a> 
+                    <a href="#" class="nav_link"> 
+                        <i class='bx bx-user nav_icon'> </i>
+                        <span class="nav_name">Empresas</span> 
+                    </a>
+                    <a href="#" class="nav_link"> 
+                        <i class='bx bx-message-square-detail nav_icon'></i>
+                         <span class="nav_name">Membresias</span>
+                   </a>  
+                   
+                        <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> 
+                        <span class="nav_name">Mi perfil</span>
+                    </a>
+                   
+                </div>
+            </div> 
+            <a href="#" class="nav_link"> 
+                <i class='bx bx-log-out nav_icon'></i> 
+                <span class="nav_name">Salir</span> 
+            </a>
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-10 bg-light">
+        
+        <html>
+
+            <body>
+              <div class="container-lg">
+                <div class="table-responsive">
+                  <div class="table-wrapper">
+                    <div class="table-title">
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <h2>Detalle <b>solicitudes</b> </h2>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Estado</th>
+                          <th>Nombre</th>
+                          <th>Actividad Principal</th>
+                          <th >Celular</th>
+                          <th>Código CIIU</th>
+                          <th>Email</th>
+                          <th>NIT</th>                          
+                          <th >Razón social</th>
+                          <th>Tipo de persona</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let Solicitud of Solicitudes; let id = index">
+                       <!--  <tr *ngFor="let usuario of usuarios let id = index"> -->
+                          <td>{{id+1}}</td>
+                          <td color="blue">Pendiente</td>
+                          <td>{{Solicitud.nombreEmpresa}}</td>    
+                          <td>{{Solicitud.actividadPrincipal}}</td>
+                          <td>{{Solicitud.celular}}</td>
+                          <td>{{Solicitud.codigoCiu}}</td>
+                          <td>{{Solicitud.email}}</td>
+                          <td>{{Solicitud.nit}}</td>                          
+                          <td>{{Solicitud.razonSocial}}</td>                          
+                          <td>{{Solicitud.tipoPersona}}</td>
+                        
+                          <td>
+                            <!-- <a  class="btn btn-outline-primary" title="Ver detalles" data-toggle="tooltip"
+                              routerLink="gestionSolicitud/registro                            ">
+                              <i class="fa fa-eye"></i>
+                            </a>
+                            <a  class="edit" title="Edit" data-toggle="tooltip" routerLink="/update/{{id}}">
+                              <i class="fa fa-pencil"></i>
+                            </a>
+                            <a  class="delete" title="Delete" data-toggle="tooltip" (click)="borrar(usuario.id !)">
+                              <i class="fa fa-trash"></i>
+                            </a> -->
+                            <button type="submit"  type="button"  class="btn btn-outline-primary" title="Ver detalles" data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#gestionar">
+                              Gestionar
+                          </button>
+                       
+                            
+                        
+                        <div class="modal fade" id="gestionar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Estes es tu código</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                                  <div class="modal-body">
+                                  <h1>Gestión de solicitud</h1>
+          
+                                  <div>
+                                      <form action="">
+                                          <div class="text">
+                                              <h3>Justificación de respuesta</h3>
+                                              <div>
+                                                  <textarea name="justificacion" id="justificacion" cols="60" rows="10" [(ngModel)]="solicitud.contenidoCorreoEstadoSolicitud" placeholder="Escribe tu justificación"required #actividadPincipal="ngModel"></textarea>
+                                                 <!--  <div class="alert alert-danger" *ngIf="justificacion.invalid && (actividadPincipal.dirty || actividadPincipal.touched)">
+                                                      <div *ngIf="justificacion.errors.required">
+                                                          Debes enviar una justificacion	
+                                                      </div> -->
+                                                    </div>
+                                          </div>
+                              
+                                              <button type="submit" style="position: absolute;top: 100%;left:50%;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gestionar">
+                                                  Agendar
+                                                </button>
+                                      </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <input type="button" onclick="location.href='https://telegram.me/ServiExpressBot';" value="Ir al chatBoot" />
+                                      </div>
+                                      </div>
+                                  </div>
+                          </div>                 
+                  
+              </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </body>
+            
+            </html>
+    </div>
+    <!--Container Main end-->

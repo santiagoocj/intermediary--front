@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RepresentanteLegalComponent } from './components/empresa/representante-legal/representante-legal.component';
 import { FinalizarRegistroEmpresaComponent } from './components/empresa/finalizar-registro-empresa/finalizar-registro-empresa.component';
+import { HomeAdminComponent } from './components/home-admin/home-admin.component';
+import { SolicitudRegistroComponent } from './components/solicitud-registro/solicitud-registro.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FinalizarRegistroEmpresaComponent } from './components/empresa/finaliza
     FooterComponent,
     RegistroEmpresaComponent,
     RepresentanteLegalComponent,
-    FinalizarRegistroEmpresaComponent
+    FinalizarRegistroEmpresaComponent,
+    HomeAdminComponent,
+    SolicitudRegistroComponent
   ],
   imports: [
     BrowserModule,

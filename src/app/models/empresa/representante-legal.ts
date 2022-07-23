@@ -6,4 +6,5 @@ export class RepresentanteLegal {
 	apellidos: string;
 	celular: string;
 	email: string;
+	
 }

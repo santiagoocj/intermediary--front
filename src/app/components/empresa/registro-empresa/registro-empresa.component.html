@@ -63,7 +63,8 @@
           <div *ngIf="celular.errors.required">
               El campo celular es requerido
           </div>
-        </div>
+      </div>
+      
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Email:</label>
@@ -74,6 +75,18 @@
           </div>
         </div>
       </div>
+
+      <div class="mb-3 mt-3">
+        <label for="pwd">Anexos</label>
+        <input type="file" class="form-control" id="Anexo" [(ngModel)]="empresa.anexo" placeholder="Sube un archivo" name="anexo" required #email="ngModel">
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors.required">
+              El campo email es requerido
+          </div>
+        </div>
+      </div>
+
+      
    
       <button class="btn btn-color-primario" role="button">Siguiente</button>
     </form>

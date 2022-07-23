@@ -8,4 +8,5 @@ export class RegistroEmpresa {
     tipoPersona: string;
     celular: string;
     email: string;
+    anexo: Blob;
 }
