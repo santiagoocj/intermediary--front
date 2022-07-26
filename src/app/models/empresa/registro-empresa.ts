@@ -5,6 +5,7 @@ export class RegistroEmpresa {
     razonSocial: string;
     codigoCiu: string;
     actividadPrincipal: string;
+    anexo: string;
     tipoPersona: string;
     celular: string;
     email: string;

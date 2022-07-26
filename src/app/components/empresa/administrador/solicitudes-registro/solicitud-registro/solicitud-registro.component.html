@@ -1,0 +1,101 @@
+<h1>Solicitudes de registro</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>id</th>
+          <th>Nombre de empresa</th>
+          <th>Estado</th>
+          <th>codigoCiu</th>
+          <th>Representante legal</th>
+          <th>Celular</th>
+          <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let solicitud of solicitudesDeRegistro.solicitudesRegistro">
+            <td>{{solicitud.id}}</td>
+            <td>{{solicitud.nombre}}</td>
+            <td><span>{{solicitud.estado}}</span></td>
+            <td>{{solicitud.registroDTO.codigoCiu}}</td>
+            <td>{{solicitud.representanteLegalDTO.nombre}} {{solicitud.representanteLegalDTO.apellidos}}</td>
+            <td>{{solicitud.representanteLegalDTO.celular}}</td>
+            <td>
+                <i class="fa-solid fa-circle-check" *ngIf="solicitud.estado == 'PENDIENTE'" (click)="abrirModalEstadoSolicitud('APROVADA', solicitud)"></i>
+                <i class="fa-solid fa-circle-minus" *ngIf="solicitud.estado == 'PENDIENTE'" (click)="abrirModalEstadoSolicitud('RECHAZADA', solicitud)"></i>
+                <i class="fa-solid fa-circle-info" (click)="abrirModalInformacionCompletaEmpresa(solicitud)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="abrir-modal animacion fadeIn" *ngIf="modalInformacionCompleta">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Información completa {{infoCompletaEmpresa.nombre}}</h2>
+                    <button (click)="cerrarModalInformacionCompletaEmpresa()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <h3>Empresa</h3>
+                            <li>Nit: {{infoCompletaEmpresa.registroDTO.nit}}</li>
+                            <li>Razón social: {{infoCompletaEmpresa.registroDTO.razonSocial}}</li>
+                            <li>Código Ciu: {{infoCompletaEmpresa.registroDTO.codigoCiu}}</li>
+                            <li>Actividad principal: {{infoCompletaEmpresa.registroDTO.actividadPrincipal}}</li>
+                            <li>Tipo persona: {{infoCompletaEmpresa.registroDTO.tipoPersona}}</li>
+                            <li>Celular: {{infoCompletaEmpresa.registroDTO.celular}}</li>
+                            <li>Correo: {{infoCompletaEmpresa.registroDTO.email}}</li>
+                            <embed [src]="conversorService.safeResourceUrl(infoCompletaEmpresa.registroDTO.anexo)" *ngIf="infoCompletaEmpresa.registroDTO.anexo" type="application/pdf" width="100%" height="600px" />
+                            <h3>Representante Legal</h3>
+                            <li>Tipo documento: {{infoCompletaEmpresa.representanteLegalDTO.tipoDocumento}}</li>
+                            <li>Documento: {{infoCompletaEmpresa.representanteLegalDTO.documento}}</li>
+                            <li>Nombre: {{infoCompletaEmpresa.representanteLegalDTO.nombre}} {{infoCompletaEmpresa.representanteLegalDTO.apellidos}}</li>
+                            <li>Celular: {{infoCompletaEmpresa.representanteLegalDTO.celular}}</li>
+                            <li>Correo: {{infoCompletaEmpresa.representanteLegalDTO.email}}</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="abrir-modal animacion fadeIn" *ngIf="modalEstadoSolicitud">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Envío Respuesta</h2>
+                    <button (click)="cerrarModalEstadoSolicitud()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form>
+                                <div class="form-group">
+                                    <label>Nombre de la solicitud</label>
+                                    <input type="text" class="form-control" id="nombreSolicitud" name="username" [(ngModel)]="contenidoEnvioSolicitudAprovacion.nombreSolicitud" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contenido del correo</label>
+                                    <textarea class="form-control" rows="5" id="contenido" name="text" [(ngModel)]="contenidoEnvioSolicitudAprovacion.contenidoCorreoEstadoSolicitud" required></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-color-primario" (click)="confirmarEstadoSolicitud()">Envíar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

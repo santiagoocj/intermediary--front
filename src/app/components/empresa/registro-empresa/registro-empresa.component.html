@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container wrap mt-3">
     <h2>PRIMER PASO</h2>
     <h4>{{registroEmpresa}}</h4>
     <form (ngSubmit)="realizarRegistro()">
@@ -46,6 +46,10 @@
               El campo actividad principal es requerido
           </div>
         </div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="pwd">Archivo:</label>
+        <input type="file" class="form-control" id="archivo" (change)="capturarArchivoAnexo($event)" name="archivo" required>
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Tipo persona:</label>

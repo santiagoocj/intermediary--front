@@ -1,0 +1,14 @@
+.btn-color-primario{
+    background-color: #2B0939;
+    margin-left: 5%;
+    margin-bottom: 25px;
+    color: white;
+    width: 90%;
+    height: 40px;
+}
+
+.login{
+    margin-top: 100px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
