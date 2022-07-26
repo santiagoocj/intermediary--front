@@ -4,12 +4,16 @@ import { RegistroEmpresaComponent } from './components/empresa/registro-empresa/
 import { RepresentanteLegalComponent } from './components/empresa/representante-legal/representante-legal.component';
 import { LoginComponent } from './components/login/login.component';
 import { UsuarioComponent } from './components/empresa/usuario/usuario.component';
+import { MenuAdministradorComponent } from './components/empresa/administrador/menu/menu-administrador/menu-administrador.component';
+import { AuthGuard } from './guard/auth/auth.guard';
+import { RoleGuard } from './guard/role/role.guard';
 
 const routes: Routes = [
   {path: 'registro/empresa', component: RegistroEmpresaComponent},
   {path: 'registro/representante/:id_registro', component: RepresentanteLegalComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'registro/usuario/:id_solicitud', component: UsuarioComponent}
+  {path: 'registro/usuario/:id_solicitud', component: UsuarioComponent},
+  {path: 'home/administrador', component: MenuAdministradorComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ROLE_ADMINISTRADOR'}}
 ];
 
 @NgModule({

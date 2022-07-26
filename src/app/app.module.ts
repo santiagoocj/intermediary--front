@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './interceptors/token/token.interceptor';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { UsuarioComponent } from './components/empresa/usuario/usuario.component';
+import { MenuAdministradorComponent } from './components/empresa/administrador/menu/menu-administrador/menu-administrador.component';
+import { SolicitudRegistroComponent } from './components/empresa/administrador/solicitudes-registro/solicitud-registro/solicitud-registro.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UsuarioComponent } from './components/empresa/usuario/usuario.component
     RegistroEmpresaComponent,
     RepresentanteLegalComponent,
     LoginComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    MenuAdministradorComponent,
+    SolicitudRegistroComponent
   ],
   imports: [
     BrowserModule,
