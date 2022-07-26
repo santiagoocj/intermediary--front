@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegistroEmpresa } from '../../models/empresa/registro-empresa';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
-import { RepresentanteLegal } from '../../models/empresa/representante-legal';
 import { RegistroUsuario } from '../../models/usuario/registro-usuario';
 import { environment } from '../../../environments/environment';
 
