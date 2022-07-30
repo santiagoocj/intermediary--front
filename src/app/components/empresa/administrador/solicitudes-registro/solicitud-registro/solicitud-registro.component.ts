@@ -67,7 +67,7 @@ export class SolicitudRegistroComponent implements OnInit {
   }
 
   private asignarURLsiEstadoSolicitudEsAprovado(estado: EstadoSolicitudEnum, solicitud: SolicitudRegistro){
-    if(estado === EstadoSolicitudEnum.APROVADA){
+    if(estado === EstadoSolicitudEnum.APROBADA){
       this.contenidoEnvioSolicitudAprovacion.contenidoCorreoEstadoSolicitud = 'Link para finalizar registro ' + this.urlEndPoint + solicitud.id;
     }
   }

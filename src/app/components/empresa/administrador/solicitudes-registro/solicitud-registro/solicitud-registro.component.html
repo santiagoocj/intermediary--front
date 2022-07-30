@@ -20,7 +20,7 @@
             <td>{{solicitud.representanteLegalDTO.nombre}} {{solicitud.representanteLegalDTO.apellidos}}</td>
             <td>{{solicitud.representanteLegalDTO.celular}}</td>
             <td>
-                <i class="fa-solid fa-circle-check" *ngIf="solicitud.estado == 'PENDIENTE'" (click)="abrirModalEstadoSolicitud('APROVADA', solicitud)"></i>
+                <i class="fa-solid fa-circle-check" *ngIf="solicitud.estado == 'PENDIENTE'" (click)="abrirModalEstadoSolicitud('APROBADA', solicitud)"></i>
                 <i class="fa-solid fa-circle-minus" *ngIf="solicitud.estado == 'PENDIENTE'" (click)="abrirModalEstadoSolicitud('RECHAZADA', solicitud)"></i>
                 <i class="fa-solid fa-circle-info" (click)="abrirModalInformacionCompletaEmpresa(solicitud)"></i>
             </td>
