@@ -1,0 +1,20 @@
+.cards{
+    height: 50%;
+}
+
+.containerclass{
+    padding-top: 4%;
+    padding-bottom: 10%;
+}
+
+.btn-color-primario{
+    background-color: #2B0939;
+    margin: 3px;
+    color: white;
+}
+
+.btn-color-secundario{
+    background-color: #E5E5E5;
+    margin: 3px;
+    color: #2B0939;
+}

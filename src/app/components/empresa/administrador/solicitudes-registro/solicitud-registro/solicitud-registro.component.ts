@@ -4,7 +4,6 @@ import { SolicitudRegistroService } from '../../../../../services/solicitud-regi
 import { SolicitudRegistro } from '../../../../../models/empresa/solicitud-registro';
 import { EstadoSolicitudEnum } from '../../../../../models/enum/estado-solicitud-enum';
 import { EstadoSolicitud } from '../../../../../models/empresa/estado-solicitud';
-import { environment } from '../../../../../../environments/environment';
 import Swal from 'sweetalert2';
 import { ConversorService } from '../../../../../services/util/conversor.service';
 

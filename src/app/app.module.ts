@@ -15,6 +15,10 @@ import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { UsuarioComponent } from './components/empresa/usuario/usuario.component';
 import { MenuAdministradorComponent } from './components/empresa/administrador/menu/menu-administrador/menu-administrador.component';
 import { SolicitudRegistroComponent } from './components/empresa/administrador/solicitudes-registro/solicitud-registro/solicitud-registro.component';
+import { PanelEmpresaComponent } from './components/empresa/panel-empresa/panel-empresa.component';
+import { AdministracionProductosComponent } from './components/empresa/panel-empresa/administracion-productos/administracion-productos.component';
+import { CategoriaComponent } from './components/categoria-productos/categoria/categoria.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { SolicitudRegistroComponent } from './components/empresa/administrador/s
     LoginComponent,
     UsuarioComponent,
     MenuAdministradorComponent,
-    SolicitudRegistroComponent
+    SolicitudRegistroComponent,
+    PanelEmpresaComponent,
+    AdministracionProductosComponent,
+    CategoriaComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
