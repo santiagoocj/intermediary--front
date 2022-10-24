@@ -19,6 +19,7 @@ import { PanelEmpresaComponent } from './components/empresa/panel-empresa/panel-
 import { AdministracionProductosComponent } from './components/empresa/panel-empresa/administracion-productos/administracion-productos.component';
 import { CategoriaComponent } from './components/categoria-productos/categoria/categoria.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { MembresiaComponent } from './components/empresa/panel-empresa/membresia/membresia.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
     PanelEmpresaComponent,
     AdministracionProductosComponent,
     CategoriaComponent,
-    InicioComponent
+    InicioComponent,
+    MembresiaComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { ImagenProducto } from 'src/app/models/producto/imagen';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { ImagenService } from '../../../../services/imagenes/imagen.service';
+import { RoleEnum } from '../../../../models/enum/role-enum';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-administracion-productos',
@@ -44,8 +46,9 @@ export class AdministracionProductosComponent implements OnInit {
 
   registrarProducto(){
     const idCategoria = this.producto.categoriaDTO.id;
+    const idEmpresa = this.authService.usuario.id;
     this.producto.imagenes = [];
-    this.productoService.registrarProducto(this.producto, idCategoria).subscribe(response =>{
+    this.productoService.registrarProducto(this.producto, idEmpresa, idCategoria).subscribe(response =>{
       Swal.fire('Registro exitoso', response.mensaje, 'success');
       this.modalRegistroProducto();
       this.listarTodosProductos();
@@ -53,8 +56,8 @@ export class AdministracionProductosComponent implements OnInit {
   }
 
   listarTodosProductos(){
-    this.productoService.listarProductos().subscribe(productos =>{
-      console.log(productos)
+    const idEmpresa = this.authService.usuario.id;
+    this.productoService.listarProductos(idEmpresa).subscribe(productos =>{
       this.listaProductos = productos
     })
   }
@@ -102,6 +105,16 @@ export class AdministracionProductosComponent implements OnInit {
 
   seleccionarFoto(event: any) {
     this.fotosSeleccionadas = event.target.files;
+    this.validarFormatoSubir();
+  }
+
+  private validarFormatoSubir(){
+    for(let i = 0; i < this.fotosSeleccionadas.length; i++){
+      if(this.fotosSeleccionadas[i].type.indexOf('image') < 0){
+        Swal.fire('Error seleccion imagenes', 'El archivo: ' + this.fotosSeleccionadas[i].name + ' debe ser del tipo imagen', 'error');
+        this.fotosSeleccionadas = [];
+      }
+    }
   }
 
   subirFoto() {
@@ -117,7 +130,6 @@ export class AdministracionProductosComponent implements OnInit {
   }
 
   eliminarImagen(posicionImagen:number){
-    console.log("DENTRA A LA FUNCION")
     if(this.producto != undefined){
       this.imagenService.eliminarImagen(this.producto.id, posicionImagen)
       .subscribe(respuesta => {
@@ -125,5 +137,20 @@ export class AdministracionProductosComponent implements OnInit {
         this.obtenerImagenesDelProducto(this.producto.id);
       })
     }
+  }
+
+  async activarProducto(idProducto: number){
+    if(this.authService.usuario.roles[0] == RoleEnum.ROLE_EMPRESA_INICIAL.toString()){
+      Swal.fire('Error publicar producto', 'La empresa no tiene los permisos para realizar la acción, por favor adquiera una membresia para poder publicar tus productos', 'info');
+      return;
+    }
+    await this.obtenerImagenesDelProducto(idProducto);
+    if(this.listaImagenes.length == 0){
+      Swal.fire('Error activar el producto', 'Para poder activar el producto debe registrar como minimo una imagen', 'warning');
+      return
+    }
+    this.productoService.activarProducto(this.authService.usuario.id, idProducto).subscribe(producto => {
+      Swal.fire('Activación Exitosa', producto.mensaje, 'success');
+    })
   }
 }

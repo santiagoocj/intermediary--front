@@ -1,6 +1,7 @@
 import { Categoria } from './categoria';
 import { ImagenProducto } from './imagen';
-export class Producto{
+import { AbstractEntidadComun } from '../comun/abstract-entidad-comun';
+export class Producto extends AbstractEntidadComun{
     id: number;
     nombre: string;
     descripcion: string;

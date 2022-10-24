@@ -155,7 +155,9 @@
 
     </div>
 </div>
-
+<div *ngIf="listaProductos.length == 0">
+    <p>No tienes productos registrados en este momento.</p>
+</div>
 <table class="table table-hover" *ngIf="listaProductos.length > 0">
     <thead>
       <tr>
@@ -174,8 +176,12 @@
         <td>{{producto.categoria.categoria}}</td>
         <td>{{producto.precioUnidad | currency: 'COP'}}</td>
         <td>{{producto.precio | currency: 'COP'}}</td>
-        <td><i (click)="modalEditarProducto(producto.id)" class="fa-solid fa-pen-to-square"></i>
-            <i (click)="modalRegistroImagenes(producto.id)" class="fa-solid fa-regular fa-images"></i></td>
+        <td>
+            <i (click)="modalEditarProducto(producto.id)" class="fa-solid fa-pen-to-square "></i>
+            <i (click)="modalRegistroImagenes(producto.id)" class="fa-solid fa-regular fa-images"></i>
+            <i *ngIf="producto.estado == 'INACTIVO'" (click)="activarProducto(producto.id)" class="fa-solid fa-check"></i>
+            <i *ngIf="producto.estado == 'ACTIVO'" class="fa-solid fa-xmark"></i>
+        </td>
       </tr>
     </tbody>
 </table>

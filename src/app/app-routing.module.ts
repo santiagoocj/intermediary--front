@@ -12,14 +12,15 @@ import { RoleEnum } from './models/enum/role-enum';
 import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
-  {path: '', component: InicioComponent},
+  {path: '', redirectTo: '/inicio', pathMatch: 'full'},
+  {path: 'inicio', component: InicioComponent},
+  {path: 'inicio/:categoria', component: InicioComponent},
   {path: 'registro/empresa', component: RegistroEmpresaComponent},
   {path: 'registro/representante/:id_registro', component: RepresentanteLegalComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registro/usuario/:id_solicitud', component: UsuarioComponent},
   {path: 'home/administrador', component: MenuAdministradorComponent, canActivate: [AuthGuard, RoleGuard], data: {role: RoleEnum.ROLE_ADMINISTRADOR}},
-  {path: 'home/empresa', component: PanelEmpresaComponent, canActivate: [AuthGuard, RoleGuard], data: {role: RoleEnum.ROLE_EMPRESA_INICIAL}},
-  {path: 'home/empresa', component: PanelEmpresaComponent, canActivate: [AuthGuard, RoleGuard], data: {role: RoleEnum.ROLE_EMPRESA}}
+  {path: 'home/empresa', component: PanelEmpresaComponent, canActivate: [AuthGuard, RoleGuard], data: {roles: [RoleEnum.ROLE_EMPRESA_INICIAL, RoleEnum.ROLE_EMPRESA]}}
 ];
 
 @NgModule({

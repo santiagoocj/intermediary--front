@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { ImagenProducto } from 'src/app/models/producto/imagen';
+import { Categoria } from '../../models/producto/categoria';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class ProductoService {
 
   }
 
-  registrarProducto(producto: Producto, categoria: number):Observable<any>{
-    return this.http.post<any>(environment.urlEndPoint + '/producto/registro/' + categoria, producto).pipe(
+  registrarProducto(producto: Producto, idEmpresa: number, categoria: number):Observable<any>{
+    return this.http.post<any>(environment.urlEndPoint + '/producto/registro/' + idEmpresa + '/'+ categoria, producto).pipe(
       catchError(e => {
         console.log(e)
         Swal.fire('Error al crear', e.error.error, 'error');
@@ -26,8 +27,16 @@ export class ProductoService {
     );
   }
 
-  listarProductos():Observable<any[]>{
-    return this.http.get<any[]>(environment.urlEndPoint + '/producto');
+  listarTodosProductosActivos():Observable<any[]>{
+    return this.http.get<any[]>(environment.urlEndPoint + '/producto/activo');
+  }
+
+  listarProductosPorCategoria(categoria: string):Observable<Producto[]>{
+    return this.http.get<Producto[]>(environment.urlEndPoint + '/producto/categoria/' + categoria);
+  }
+
+  listarProductos(idEmpresa :number):Observable<any[]>{
+    return this.http.get<any[]>(environment.urlEndPoint + '/producto/listar/' + idEmpresa);
   }
 
   obtenerProducto(idProducto: number):Observable<Producto>{
@@ -45,5 +54,14 @@ export class ProductoService {
 
   obtenerImagenes(idProducto: number):Observable<ImagenProducto[]>{
     return this.http.get<ImagenProducto[]>(environment.urlEndPoint + '/producto/imagenes/visualizar/' + idProducto);
+  }
+
+  activarProducto(idEmpresa: number, idProducto: number): Observable<any>{
+    return this.http.put<any>(environment.urlEndPoint + '/activar/producto/' + idEmpresa + '/' + idProducto, null).pipe(
+      catchError(e => {
+        Swal.fire('Error al activar', e.error.error, 'warning');
+        return throwError(() => e);
+      })
+    );
   }
 }

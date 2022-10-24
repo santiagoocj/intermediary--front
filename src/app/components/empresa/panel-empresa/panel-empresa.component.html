@@ -21,6 +21,7 @@
         <div class="col offset-2" id="main">
             <div class="mt-3" [ngSwitch]="opcionElegida">
                 <div *ngSwitchCase="'MIS_PRODUCTOS'"><app-administracion-productos></app-administracion-productos></div>
+                <div *ngSwitchCase="'MEMBRESIAS'"><app-membresia></app-membresia></div>
                 <div *ngSwitchDefault>Página principal de la empresa</div>
             </div>
         </div>
