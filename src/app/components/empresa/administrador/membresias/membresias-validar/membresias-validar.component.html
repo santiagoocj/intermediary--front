@@ -1,0 +1,52 @@
+<div>
+    <h2>Membresías a revisar</h2>
+    <p *ngIf="informacionCompraMembresia.length == 0">No hay membresias a revisar en este momento </p>
+    <table class="table table-striped" *ngIf="informacionCompraMembresia.length != 0">
+        <thead>
+            <tr>
+                <th>Membresia</th>
+                <th>Empresa</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Comprobante de pago</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let informacionMembresia of informacionCompraMembresia">
+            <tr>
+                <td>{{informacionMembresia.membresia}}</td>
+                <td>{{informacionMembresia.nombreEmpresa}}</td>
+                <td>{{informacionMembresia.celular}}</td>
+                <td>{{informacionMembresia.email}}</td>
+                <td>
+                    <i class="fa-solid fa-file-image cursor-pointer" (click)="abrirModalVisualizarComprobantePago(informacionMembresia.comprobantePago)"></i>
+                    <i class="fa-sharp fa-solid fa-square-check cursor-pointer" (click)="activarMembresia(informacionMembresia.idEmpresa, informacionMembresia.idVigencia)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!--MODAL ENCARGADO DE VISUALIZAR LOC COMPROBANTES DE PAGO-->
+<div class="abrir-modal animacion fadeIn" *ngIf="estadoModalVisualizarComprobantePago">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Comprobante de pago</h2>
+                    <button (click)="modalCerrarComprobantePago()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <img src="../../../../../assets/img/Comprobantes de pago/{{comprobantePago}}"> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -13,7 +13,7 @@
                     <a class="nav-link centrado" (click)="asignarOpcionElegida('EMPRESAS')"> Empresas</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MEMBRESIAS')">Membresias</a>
+                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MEMBRESIAS')">Membresias a revisar</a>
                   </li>
                 </ul>
               </nav>
@@ -21,6 +21,7 @@
         <div class="col offset-2" id="main">
             <div class="mt-3" [ngSwitch]="opcionElegida">
                 <div *ngSwitchCase="'SOLICITUDES'"><app-solicitud-registro></app-solicitud-registro></div>
+                <div *ngSwitchCase="'MEMBRESIAS'"><app-membresias-validar></app-membresias-validar></div>
                 <div *ngSwitchDefault>Página principal del administrador</div>
             </div>
             </div>

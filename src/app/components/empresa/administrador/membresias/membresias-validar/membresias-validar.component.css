@@ -1,15 +1,5 @@
-.btn-color-primario{
-    background-color: #2B0939;
-    margin: 3px;
-    color: white;
-}
-
-.fa-solid{
-    margin: 5px;
-    cursor: pointer;
-}
-
 .cursor-pointer{
+    margin-left: 15px;
     cursor: pointer;
 }
 
@@ -51,4 +41,15 @@
     to {
         opacity: 1;
     }
+}
+
+.btn-color-primario{
+    background-color: #2B0939;
+    margin: 3px;
+    color: white;
+}
+
+.aling-icon{
+    position: absolute;
+    font-size: 30px;
 }

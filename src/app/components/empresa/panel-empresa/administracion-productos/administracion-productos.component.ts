@@ -7,7 +7,6 @@ import { ImagenProducto } from 'src/app/models/producto/imagen';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { ImagenService } from '../../../../services/imagenes/imagen.service';
 import { RoleEnum } from '../../../../models/enum/role-enum';
-import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-administracion-productos',

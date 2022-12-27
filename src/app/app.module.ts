@@ -20,6 +20,7 @@ import { AdministracionProductosComponent } from './components/empresa/panel-emp
 import { CategoriaComponent } from './components/categoria-productos/categoria/categoria.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { MembresiaComponent } from './components/empresa/panel-empresa/membresia/membresia.component';
+import { MembresiasValidarComponent } from './components/empresa/administrador/membresias/membresias-validar/membresias-validar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MembresiaComponent } from './components/empresa/panel-empresa/membresia
     AdministracionProductosComponent,
     CategoriaComponent,
     InicioComponent,
-    MembresiaComponent
+    MembresiaComponent,
+    MembresiasValidarComponent
   ],
   imports: [
     BrowserModule,
