@@ -8,7 +8,7 @@
                   <p class="card-text">{{producto.descripcion}}</p>
                   <p class="card-text"><strong>Precios</strong><br><strong>Unidad: </strong>{{producto.precioUnidad | currency: 'COP'}}</p>
                   <a href="#" class="btn btn-primary btn-color-secundario">Mas información</a>
-                  <a href="#" class="btn btn-primary btn-color-primario">Estoy interesado</a>
+                  <a [routerLink]="['/negocio', producto.id]" class="btn btn-primary btn-color-primario">Comprar</a>
                 </div>
             </div>
             <br>

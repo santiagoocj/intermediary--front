@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-6">
+            <h2>Información del producto</h2>
+            <div>
+                <h4>Producto</h4>
+                <p>{{producto.nombre}}</p>
+            </div>
+            <div>
+                <h4>Información General</h4>
+                <p>{{producto.descripcion}}</p>
+            </div>
+            <div>
+                <h4>Valor Unidad</h4>
+                <p>{{producto.precioUnidad | currency: 'COP'}}</p>
+            </div>
+        </div>
+        <div class="col-6">
+            <h2>Oferta Comprador</h2>
+            <form>
+                <div class="form-group">
+                    <label for="contraOfertaComprador">Informacion:</label>
+                    <textarea type="text" class="form-control" placeholder="Acá puede agregar información que desee comunicar al vendedor" id="contraOfertaComprador" name="contraOfertaComprador" [(ngModel)]="negocio.contraOfertaComprador" required></textarea>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-color-primario" (click)="realizarOfertaComprador()">Negociar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

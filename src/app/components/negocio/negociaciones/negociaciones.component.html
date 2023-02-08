@@ -1,0 +1,111 @@
+<div class="container">
+    <h2>Mis negociaciones</h2>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Producto</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let negocio of negocios">
+          <tr>
+            <td *ngIf="negocio.comprador.id == idEmpresa">Compra</td>
+            <td *ngIf="negocio.comprador.id != idEmpresa">Venta</td>
+            <td>{{negocio.producto.nombre}}</td>
+            <td>{{negocio.solicitudCompra.estadoNegociacion}}</td>
+            <td>
+              <i (click)="activarModalNegociaciones(negocio)" class="fa-solid fa-briefcase"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<!--Modal de negociaciones-->
+<div class="abrir-modal animacion fadeIn" *ngIf="modalNegociaciones">
+  <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title">panel de negociacion</h2>
+                  <button (click)="cerrarModalnegociaciones()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-6">
+                          <h2>Información del producto</h2>
+                          <div>
+                              <h4>Producto</h4>
+                              <p>{{negocio.producto.nombre}}</p>
+                          </div>
+                          <div>
+                              <h4>Información General</h4>
+                              <p>{{negocio.producto.descripcion}}</p>
+                          </div>
+                          <div>
+                              <h4>Valor Unidad</h4>
+                              <p>{{negocio.producto.precioUnidad | currency: 'COP'}}</p>
+                          </div>
+                      </div>
+                      <!--Informacion panel comprador-->
+                      <div class="col-6" *ngIf="negocio.comprador.id == idEmpresa">
+                        <h2>Información de la negociación</h2>
+                        <div>
+                          <h4>Tu oferta</h4>
+                          <p>{{negocio.contraOfertaComprador}}</p>
+                        </div>
+                        <div *ngIf="negocio.contraOfertaVendedor == null">
+                          <h4>Oferta vendedor</h4>
+                          <p>el vendedor no ha respondido tu solicitud de compra</p>
+                        </div>
+                        <div *ngIf="negocio.contraOfertaVendedor != null">
+                          <h4>Oferta vendedor</h4>
+                          <p>{{negocio.contraOfertaVendedor}}</p>
+                        </div>
+                        <div class="row" *ngIf="negocio.contraOfertaVendedor == null">
+                          <div class="col-6">
+                            <button type="submit" (click)="cancelarOferta()" class="btn btn-color-secundario">Cancelar oferta</button>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Informacion panel vendedor-->
+                      <div class="col-6" *ngIf="negocio.comprador.id != idEmpresa">
+                        <h2>Información de la negociación</h2>
+                        <div>
+                          <h4>Oferta comprador</h4>
+                          <p>{{negocio.contraOfertaComprador}}</p>
+                        </div>
+                        <div *ngIf="negocio.contraOfertaVendedor == null">
+                          <form>
+                            <div class="form-group">
+                                <h4>Tu oferta</h4>
+                                <textarea type="text" class="form-control" placeholder="Acá puede agregar información que desee comunicar al comprador" id="contraOfertaVendedor" name="contraOfertaVendedor" [(ngModel)]="negocio.contraOfertaVendedor" required></textarea>
+                            </div>
+                        </form>
+                        </div>
+                        <div *ngIf="negocio.contraOfertaVendedor != null">
+                          <h4>Tu oferta</h4>
+                          <p>{{negocio.contraOfertaVendedor}}</p>
+                        </div>
+                        <div class="row" *ngIf="negocio.contraOfertaVendedor == null">
+                          <div class="col-6">
+                            <button type="submit" (click)="cancelarOferta()" class="btn btn-color-secundario">Cancelar oferta</button>
+                          </div>
+                          <div class="col-6">
+                            <button type="submit" (click)="negociar()" class="btn btn-color-primario">Negociar</button>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>

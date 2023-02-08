@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
     else if(this.auth.hasRole(RoleEnum.ROLE_EMPRESA_INICIAL) || this.auth.hasRole(RoleEnum.ROLE_EMPRESA)){
       this.route.navigate(['/home/empresa'])
     }
+    
   }
 
   obtenerCategorias(){
