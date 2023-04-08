@@ -9,8 +9,13 @@
           <li class="nav-item">
             <a class="nav-link" href="#">¿Quienes Somos?</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Categorias</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Categorías</a>
+            <div class="dropdown-menu" >
+              <div *ngFor="let categoria of categorias">
+                <a class="dropdown-item" [routerLink]="['/inicio', categoria.categoria]">{{categoria.categoria}}</a>
+              </div>
+            </div>
           </li>
         </ul>
         <form class="d-flex" *ngIf="!auth.isAuthenticated()">
@@ -22,6 +27,7 @@
             {{auth.usuario.username}}
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
+            <li><button  (click)="obtenerPanelDeAcuerdoRol()" class="dropdown-item" type="button">Mi panel</button></li>
             <li><button (click)="logout()" class="dropdown-item" type="button">Cerrar Sesión</button></li>
           </ul>
         </div>

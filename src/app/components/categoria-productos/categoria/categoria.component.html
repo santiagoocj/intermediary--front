@@ -1,0 +1,4 @@
+<select class="form-control" name="categorias" [(ngModel)]="categoriaSeleccionada" (click)="ejecutarEnvioCategoria()">
+    <option [ngValue]="undefined">--- Seleccionar una categoría ---</option>
+    <option *ngFor="let categoria of categorias" [ngValue]="categoria" >{{categoria.categoria}}</option>
+</select>

@@ -7,23 +7,24 @@
                     <a class="nav-link centrado" (click)="asignarOpcionElegida('MI_PERFIL')">Mi perfil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link centrado" (click)="asignarOpcionElegida('SOLICITUDES')">Solicitudes</a>
+                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MIS_PRODUCTOS')">Mis productos</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link centrado" (click)="asignarOpcionElegida('EMPRESAS')"> Empresas</a>
+                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MIS_NEGOCIACIONES')">Mis negociaciones</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MEMBRESIAS')">Membresias a revisar</a>
+                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MEMBRESIAS')">Membresias</a>
                   </li>
                 </ul>
               </nav>
         </div>
         <div class="col offset-2" id="main">
             <div class="mt-3" [ngSwitch]="opcionElegida">
-                <div *ngSwitchCase="'SOLICITUDES'"><app-solicitud-registro></app-solicitud-registro></div>
-                <div *ngSwitchCase="'MEMBRESIAS'"><app-membresias-validar></app-membresias-validar></div>
-                <div *ngSwitchDefault>Página principal del administrador</div>
-            </div>
+                <div *ngSwitchCase="'MIS_PRODUCTOS'"><app-administracion-productos></app-administracion-productos></div>
+                <div *ngSwitchCase="'MEMBRESIAS'"><app-membresia></app-membresia></div>
+                <div *ngSwitchCase="'MIS_NEGOCIACIONES'"><app-negociaciones></app-negociaciones></div>
+                <div *ngSwitchDefault>Página principal de la empresa</div>
             </div>
         </div>
+    </div>
 </div>

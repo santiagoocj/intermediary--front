@@ -1,0 +1,187 @@
+<button type="button" (click)="modalRegistroProducto()" class="btn btn-color-primario">Registrar producto</button>
+
+<!--MODAL ENCARGADO DE REGISTRA EL PRODUCTO-->
+<div class="abrir-modal animacion fadeIn" *ngIf="estadoModalRegistroProducto">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Registro producto</h2>
+                    <button (click)="cerrarModalRegistroProducto()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form>
+                                <div class="form-group">
+                                    <label>Nombre del producto</label>
+                                    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" [(ngModel)]="producto.nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Categoría</label>
+                                    <app-categoria (enviarCategoria) = "obtenerCategoria($event)"></app-categoria>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción</label>
+                                    <textarea type="text" class="form-control" rows="5" id="descripcion" name="descripcion" [(ngModel)]="producto.descripcion" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dimensiones</label>
+                                    <input type="text" class="form-control" id="dimensiones" name="dimensiones" [(ngModel)]="producto.dimensiones" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Peso</label>
+                                    <input type="number" class="form-control" id="peso" name="peso" [(ngModel)]="producto.peso" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio</label>
+                                    <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="producto.precio" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio unidad</label>
+                                    <input type="number" class="form-control" id="precioUnidad" name="precioUnidad" [(ngModel)]="producto.precioUnidad" required>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-color-primario" (click)="registrarProducto()">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--MODAL ENCARGADO DE EDITAR EL PRODUCTO-->
+<div class="abrir-modal animacion fadeIn" *ngIf="estadoModalEditarProducto">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Editar producto</h2>
+                    <button (click)="cerrarModalEdicionProducto()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form>
+                                <div class="form-group">
+                                    <label>Nombre del producto</label>
+                                    <input type="text" class="form-control" id="nombreProducto" name="nombreProducto" [(ngModel)]="producto.nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Categoría</label>
+                                    <app-categoria (enviarCategoria) = "obtenerCategoria($event)"></app-categoria>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción</label>
+                                    <textarea type="text" class="form-control" rows="5" id="descripcion" name="descripcion" [(ngModel)]="producto.descripcion" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dimensiones</label>
+                                    <input type="text" class="form-control" id="dimensiones" name="dimensiones" [(ngModel)]="producto.dimensiones" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Peso</label>
+                                    <input type="number" class="form-control" id="peso" name="peso" [(ngModel)]="producto.peso" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio</label>
+                                    <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="producto.precio" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio unidad</label>
+                                    <input type="number" class="form-control" id="precioUnidad" name="precioUnidad" [(ngModel)]="producto.precioUnidad" required>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-color-primario" (click)="editarProducto()">Editar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--MODAL ENCARGADO DE REGISTRAR IMAGENES-->
+<div class="abrir-modal animacion fadeIn" *ngIf="estadoModalRegistroImagenes">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Imagenes del producto</h2>
+                    <button (click)="modalCerrarRegistroImagenes()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                                <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" multiple>
+                            </div>
+                            <div>
+                                <button type="submit" (click)="subirFoto()" class="btn btn-color-primario" *ngIf="fotosSeleccionadas.length > 0">Subir Fotos</button>
+                            </div>
+                            <div class="alert alert-warning" *ngIf="listaImagenes.length == 0">
+                                <p>El producto no tiene imagenes</p>
+                            </div>
+                            <div *ngIf="listaImagenes.length != 0">
+                                <img src="../../../../../assets/img/{{listaImagenes[posicionImagen].ruta}}" class="rounded" alt="Cinque Terre" width="304" height="236"> 
+                                <table class="table table-borderless">
+                                    <tbody *ngFor="let imagen of listaImagenes">
+                                        <tr>
+                                          <td><img src="../../../../../assets/img/{{imagen.ruta}}" (click)="posicionImagen = listaImagenes.indexOf(imagen)" class="rounded cursor-pointer" alt="Cinque Terre" width="100" height="100"></td>
+                                          <td><i class="fa-solid fa-trash aling-icon" (click)="eliminarImagen(listaImagenes.indexOf(imagen))"></i></td>
+                                        </tr>
+                                      </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div *ngIf="listaProductos.length == 0">
+    <p>No tienes productos registrados en este momento.</p>
+</div>
+<table class="table table-hover" *ngIf="listaProductos.length > 0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio Unidad</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let producto of listaProductos">
+      <tr>
+        <td>{{producto.id}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.categoria.categoria}}</td>
+        <td>{{producto.precioUnidad | currency: 'COP'}}</td>
+        <td>{{producto.precio | currency: 'COP'}}</td>
+        <td>
+            <i (click)="modalEditarProducto(producto.id)" class="fa-solid fa-pen-to-square "></i>
+            <i (click)="modalRegistroImagenes(producto.id)" class="fa-solid fa-regular fa-images"></i>
+            <i *ngIf="producto.estado == 'INACTIVO'" (click)="activarProducto(producto.id)" class="fa-solid fa-check"></i>
+            <i *ngIf="producto.estado == 'ACTIVO'" class="fa-solid fa-xmark"></i>
+        </td>
+      </tr>
+    </tbody>
+</table>

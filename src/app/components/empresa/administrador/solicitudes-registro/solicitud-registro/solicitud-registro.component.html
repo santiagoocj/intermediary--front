@@ -49,7 +49,7 @@
                             <li>Tipo persona: {{infoCompletaEmpresa.registroDTO.tipoPersona}}</li>
                             <li>Celular: {{infoCompletaEmpresa.registroDTO.celular}}</li>
                             <li>Correo: {{infoCompletaEmpresa.registroDTO.email}}</li>
-                            <embed [src]="conversorService.safeResourceUrl(infoCompletaEmpresa.registroDTO.anexo)" *ngIf="infoCompletaEmpresa.registroDTO.anexo" type="application/pdf" width="100%" height="600px" />
+                            <li><a href="../../../../../assets/img/Anexo documentos/{{infoCompletaEmpresa.registroDTO.anexo}}" download="anexos {{infoCompletaEmpresa.registroDTO.nombreEmpresa}}">Descargar anexos</a></li>
                             <h3>Representante Legal</h3>
                             <li>Tipo documento: {{infoCompletaEmpresa.representanteLegalDTO.tipoDocumento}}</li>
                             <li>Documento: {{infoCompletaEmpresa.representanteLegalDTO.documento}}</li>
