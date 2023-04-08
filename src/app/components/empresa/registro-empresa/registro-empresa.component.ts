@@ -15,10 +15,10 @@ export class RegistroEmpresaComponent implements OnInit {
   public empresa:RegistroEmpresa = new RegistroEmpresa();
   public registroEmpresa:string = 'Registro de la empresa';
   previsualizacion: string;
+  documentoAnexo:File;
 
   constructor(private empresaService: EmpresaService, 
-    private router: Router, 
-    private conversorService: ConversorService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -26,19 +26,17 @@ export class RegistroEmpresaComponent implements OnInit {
   public realizarRegistro(): any{
     this.empresaService.preRegistro(this.empresa).subscribe(
       response => {
-        this.router.navigate([`/registro/representante/${response.registro.id}`])
-        Swal.fire('Registro Exitoso!', response.mensaje, 'success')
+        this.empresaService.registrarDocumento(this.documentoAnexo,response.registro.id).subscribe(() => {
+          this.router.navigate([`/registro/representante/${response.registro.id}`]);
+          Swal.fire('Registro Exitoso!', response.mensaje, 'success');
+        });
       }
     );
   }
 
   capturarArchivoAnexo(event: any): any{
-    const anexo = event.target.files[0];
-    this.conversorService.extraerBase64(anexo).then((archivo: any)=> {
-      this.empresa.anexo = archivo.base;
-      this.previsualizacion = archivo.base;
-      Swal.fire('Archivo exitos', 'El anexo se subio de forma correcta', 'success');
-    })
+    this.documentoAnexo = event.target.files[0];
+    Swal.fire('Archivo exitos', 'El anexo se subio de forma correcta', 'success');
   }
 
 }
