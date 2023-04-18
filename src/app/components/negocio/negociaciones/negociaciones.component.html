@@ -57,7 +57,13 @@
                         <h2>Información de la negociación</h2>
                         <div>
                           <h4>Tu oferta</h4>
-                          <p>{{negocio.contraOfertaComprador}}</p>
+                          <p>
+                            <strong>Cantidad a comprar: </strong> {{negocio.cantidad}}
+                            <br>
+                            <strong>Valor total: </strong> {{negocio.cantidad}}*{{negocio.producto.precioUnidad}}
+                            <br>
+                            <strong>Información adicional:</strong> {{negocio.contraOfertaComprador}}
+                          </p>
                         </div>
                         <div *ngIf="negocio.contraOfertaVendedor == null">
                           <h4>Oferta vendedor</h4>
@@ -78,7 +84,11 @@
                         <h2>Información de la negociación</h2>
                         <div>
                           <h4>Oferta comprador</h4>
-                          <p>{{negocio.contraOfertaComprador}}</p>
+                          <strong>Cantidad a comprar: </strong> {{negocio.cantidad}}
+                            <br>
+                            <strong>Valor total: </strong> {{negocio.cantidad}}*{{negocio.producto.precioUnidad}}
+                            <br>
+                            <strong>Información adicional:</strong> {{negocio.contraOfertaComprador}}
                         </div>
                         <div *ngIf="negocio.contraOfertaVendedor == null">
                           <form>

@@ -12,17 +12,25 @@
             </div>
             <div>
                 <h4>Valor Unidad</h4>
-                <p>{{producto.precioUnidad | currency: 'COP'}}</p>
+                <p>{{producto.precioUnidad | currency: 'COP '}}</p>
             </div>
         </div>
         <div class="col-6">
             <h2>Oferta Comprador</h2>
             <form>
                 <div class="form-group">
+                    <label for="cantidad">Cantidad a comprar:</label>
+                    <input type="number" class="form-control" placeholder="Acá puede agregar la cantidad de productos a comprar" id="cantidad" name="cantidad" [(ngModel)]="negocio.cantidad" required>
+                </div>
+                <div class="form-group">
                     <label for="contraOfertaComprador">Informacion:</label>
                     <textarea type="text" class="form-control" placeholder="Acá puede agregar información que desee comunicar al vendedor" id="contraOfertaComprador" name="contraOfertaComprador" [(ngModel)]="negocio.contraOfertaComprador" required></textarea>
                 </div>
-                <div class="mt-3">
+                <div *ngIf="negocio.cantidad != undefined" class="mt-3">
+                    <h4>Valor Total</h4>
+                    <p>{{producto.precioUnidad*negocio.cantidad | currency: 'COP '}}</p>
+                </div>
+                <div>
                     <button type="submit" class="btn btn-color-primario" (click)="realizarOfertaComprador()">Negociar</button>
                 </div>
             </form>
