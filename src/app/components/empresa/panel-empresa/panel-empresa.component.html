@@ -4,9 +4,6 @@
             <nav class="navbar">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link centrado" (click)="asignarOpcionElegida('MI_PERFIL')">Mi perfil</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link centrado" (click)="asignarOpcionElegida('MIS_PRODUCTOS')">Mis productos</a>
                   </li>
                   <li class="nav-item">
@@ -23,7 +20,6 @@
                 <div *ngSwitchCase="'MIS_PRODUCTOS'"><app-administracion-productos></app-administracion-productos></div>
                 <div *ngSwitchCase="'MEMBRESIAS'"><app-membresia></app-membresia></div>
                 <div *ngSwitchCase="'MIS_NEGOCIACIONES'"><app-negociaciones></app-negociaciones></div>
-                <div *ngSwitchDefault>Página principal de la empresa</div>
             </div>
         </div>
     </div>

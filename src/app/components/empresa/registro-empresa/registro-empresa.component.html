@@ -4,7 +4,7 @@
     <form (ngSubmit)="realizarRegistro()">
       <div class="mb-3 mt-3">
         <label for="nit">Nit:</label>
-        <input type="text" class="form-control" id="nit" [(ngModel)]="empresa.nit" placeholder="Nit de la empresa" name="nit" required #nit="ngModel">
+        <input type="text" class="form-control" id="nit" [(ngModel)]="empresa.nit" placeholder="Nit de la empresa" name="nit" required #nit="ngModel" minlength="4" maxlength="7">
         <div class="alert alert-danger" *ngIf="nit.invalid && (nit.dirty || nit.touched)">
           <div *ngIf="nit.errors.required">
               El campo nit es requerido
@@ -13,7 +13,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Nombre:</label>
-        <input type="text" class="form-control" id="nombre" [(ngModel)]="empresa.nombreEmpresa" placeholder="Nombre de la empresa" name="nombre" required #nombre="ngModel">
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="empresa.nombreEmpresa" placeholder="Nombre de la empresa" name="nombre" required #nombre="ngModel" maxlength="20">
         <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
           <div *ngIf="nombre.errors.required">
               El campo nombre es requerido
@@ -22,7 +22,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Razón social:</label>
-        <input type="text" class="form-control" id="razonSocial" [(ngModel)]="empresa.razonSocial" placeholder="Razon social" name="razonSocial" required #razonSocial="ngModel">
+        <input type="text" class="form-control" id="razonSocial" [(ngModel)]="empresa.razonSocial" placeholder="Razon social" name="razonSocial" required #razonSocial="ngModel" maxlength="20">
         <div class="alert alert-danger" *ngIf="razonSocial.invalid && (razonSocial.dirty || razonSocial.touched)">
           <div *ngIf="razonSocial.errors.required">
               El campo razón social es requerido
@@ -31,7 +31,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Código ciu:</label>
-        <input type="text" class="form-control" id="codigoCiu"  [(ngModel)]="empresa.codigoCiu" placeholder="Código ciu" name="codigoCiu" required #codigoCiu="ngModel">
+        <input type="text" class="form-control" id="codigoCiu"  [(ngModel)]="empresa.codigoCiu" placeholder="Código ciu" name="codigoCiu" required #codigoCiu="ngModel" maxlength="20">
         <div class="alert alert-danger" *ngIf="codigoCiu.invalid && (codigoCiu.dirty || codigoCiu.touched)">
           <div *ngIf="codigoCiu.errors.required">
               El campo código ciu es requerido
@@ -40,7 +40,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Actividad principal:</label>
-        <input type="text" class="form-control" id="actividadPincipal" [(ngModel)]="empresa.actividadPrincipal" placeholder="Actividad principal de la empresa" name="actividadPincipal" required #actividadPincipal="ngModel">
+        <input type="text" class="form-control" id="actividadPincipal" [(ngModel)]="empresa.actividadPrincipal" placeholder="Actividad principal de la empresa" name="actividadPincipal" required #actividadPincipal="ngModel" maxlength="20">
         <div class="alert alert-danger" *ngIf="actividadPincipal.invalid && (actividadPincipal.dirty || actividadPincipal.touched)">
           <div *ngIf="actividadPincipal.errors.required">
               El campo actividad principal es requerido
@@ -48,12 +48,12 @@
         </div>
       </div>
       <div class="mb-3 mt-3">
-        <label for="pwd">Archivo:</label>
-        <input type="file" class="form-control" id="archivo" (change)="capturarArchivoAnexo($event)" name="archivo" required>
+        <label for="pwd">Archivo (Adjuntar cámara de comercio en formato pdf):</label>
+        <input type="file" class="form-control" id="archivo" (change)="capturarArchivoAnexo($event)" name="archivo" required accept=".pdf">
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Tipo persona:</label>
-        <input type="text" class="form-control" id="tipoPersona" [(ngModel)]="empresa.tipoPersona" placeholder="Encargado de la empresa (Natural o jurídico)" name="tipoPersona" required #tipoPersona="ngModel">
+        <input type="text" class="form-control" id="tipoPersona" [(ngModel)]="empresa.tipoPersona" placeholder="Encargado de la empresa (Natural o jurídico)" name="tipoPersona" required #tipoPersona="ngModel" maxlength="20">
         <div class="alert alert-danger" *ngIf="tipoPersona.invalid && (tipoPersona.dirty || tipoPersona.touched)">
           <div *ngIf="tipoPersona.errors.required">
               El campo tipo persona es requerido
@@ -62,7 +62,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Celular:</label>
-        <input type="text" class="form-control" id="celular" [(ngModel)]="empresa.celular" placeholder="Celular del representante" name="celular" required #celular="ngModel">
+        <input type="text" class="form-control" id="celular" [(ngModel)]="empresa.celular" placeholder="Celular del representante" name="celular" required #celular="ngModel" maxlength="10">
         <div class="alert alert-danger" *ngIf="celular.invalid && (celular.dirty || celular.touched)">
           <div *ngIf="celular.errors.required">
               El campo celular es requerido
@@ -71,7 +71,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Email:</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="empresa.email" placeholder="Email de la empresa" name="email" required #email="ngModel">
+        <input type="email" class="form-control" id="email" [(ngModel)]="empresa.email" placeholder="Email de la empresa" name="email" required #email="ngModel" maxlength="20">
         <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
           <div *ngIf="email.errors.required">
               El campo email es requerido

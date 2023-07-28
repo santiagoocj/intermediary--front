@@ -31,7 +31,6 @@ export class RepresentanteLegalComponent implements OnInit {
   public crearRepresentante(): any{
     this.representateService.registroRepresentante(this.representanteLegal).subscribe(
       response => {
-        Swal.fire('Registro Representante', response.mensaje, 'success');
         this.crearSolicitudRegistro(this.idRegistro, response.cliente.id);
       }
     )

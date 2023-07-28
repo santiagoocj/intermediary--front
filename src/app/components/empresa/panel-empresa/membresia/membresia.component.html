@@ -17,7 +17,7 @@
       <tr>
         <td>{{membresia.suscripcion}}</td>
         <td>{{membresia.diasVigencia}}</td>
-        <td>{{membresia.valor}}</td>
+        <td>{{membresia.valor | currency: 'COP'}}</td>
         <td><button type="submit" class="btn btn-color-primario" (click)="activarModalRegistroMembresia(membresia.id)">Comprar</button></td>
       </tr>
     </tbody>

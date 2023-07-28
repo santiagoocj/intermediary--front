@@ -12,6 +12,8 @@ import { ConversorService } from 'src/app/services/util/conversor.service';
 })
 export class RegistroEmpresaComponent implements OnInit {
 
+  public tipoPersonas: String[] = ["Natural", "Jurídico"];
+
   public empresa:RegistroEmpresa = new RegistroEmpresa();
   public registroEmpresa:string = 'Registro de la empresa';
   previsualizacion: string;

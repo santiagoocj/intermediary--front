@@ -14,6 +14,8 @@ export class NegociacionesComponent implements OnInit {
   idEmpresa: number;
   modalNegociaciones: boolean = false;
   negocio: any;
+  contraOfertaVendedor: String;
+  contraOfertaComprador: String;
 
   constructor(private authService: AuthService,
     private negocioService: NegocioService) { }
@@ -47,9 +49,14 @@ export class NegociacionesComponent implements OnInit {
   }
 
   negociar(){
+    this.negocio.contraOfertaVendedor = this.contraOfertaVendedor;
     this.negocioService.negociar(this.negocio.id, this.negocio.contraOfertaVendedor).subscribe(res => {
       Swal.fire('Solicitud aceptada', res.mensaje, 'success');
     });
+  }
+
+  calcularTotal(){
+    return this.negocio.cantidad * this.negocio.producto.precioUnidad;
   }
 
 }

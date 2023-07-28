@@ -60,20 +60,24 @@
                           <p>
                             <strong>Cantidad a comprar: </strong> {{negocio.cantidad}}
                             <br>
-                            <strong>Valor total: </strong> {{negocio.cantidad}}*{{negocio.producto.precioUnidad}}
+                            <strong>Valor total: </strong> {{calcularTotal() | currency: 'COP'}}
                             <br>
                             <strong>Información adicional:</strong> {{negocio.contraOfertaComprador}}
                           </p>
                         </div>
-                        <div *ngIf="negocio.contraOfertaVendedor == null">
+                        <div *ngIf="negocio.solicitudCompra.estadoNegociacion == 'RECHAZADA'">
+                          <h4>Oferta vendedor</h4>
+                          <p>El vendedor ha rechazado tu oferta, debes empezar el proceso de nuevo con una oferta mas atractiva</p>
+                        </div>
+                        <div *ngIf="negocio.contraOfertaVendedor == null && negocio.solicitudCompra.estadoNegociacion != 'RECHAZADA'">
                           <h4>Oferta vendedor</h4>
                           <p>el vendedor no ha respondido tu solicitud de compra</p>
                         </div>
-                        <div *ngIf="negocio.contraOfertaVendedor != null">
+                        <div *ngIf="negocio.contraOfertaVendedor != null ">
                           <h4>Oferta vendedor</h4>
                           <p>{{negocio.contraOfertaVendedor}}</p>
                         </div>
-                        <div class="row" *ngIf="negocio.contraOfertaVendedor == null">
+                        <div class="row" *ngIf="negocio.contraOfertaVendedor == null && negocio.solicitudCompra.estadoNegociacion != 'RECHAZADA'">
                           <div class="col-6">
                             <button type="submit" (click)="cancelarOferta()" class="btn btn-color-secundario">Cancelar oferta</button>
                           </div>
@@ -86,15 +90,15 @@
                           <h4>Oferta comprador</h4>
                           <strong>Cantidad a comprar: </strong> {{negocio.cantidad}}
                             <br>
-                            <strong>Valor total: </strong> {{negocio.cantidad}}*{{negocio.producto.precioUnidad}}
+                            <strong>Valor total: </strong> {{calcularTotal() | currency: 'COP'}}
                             <br>
                             <strong>Información adicional:</strong> {{negocio.contraOfertaComprador}}
                         </div>
-                        <div *ngIf="negocio.contraOfertaVendedor == null">
+                        <div *ngIf="negocio.contraOfertaVendedor == null && negocio.solicitudCompra.estadoNegociacion != 'RECHAZADA'">
                           <form>
                             <div class="form-group">
                                 <h4>Tu oferta</h4>
-                                <textarea type="text" class="form-control" placeholder="Acá puede agregar información que desee comunicar al comprador" id="contraOfertaVendedor" name="contraOfertaVendedor" [(ngModel)]="negocio.contraOfertaVendedor" required></textarea>
+                                <textarea type="text" class="form-control" placeholder="Acá puede agregar información que desee comunicar al comprador" id="contraOfertaVendedor" name="contraOfertaVendedor" [(ngModel)]="contraOfertaVendedor" required></textarea>
                             </div>
                         </form>
                         </div>
@@ -102,9 +106,9 @@
                           <h4>Tu oferta</h4>
                           <p>{{negocio.contraOfertaVendedor}}</p>
                         </div>
-                        <div class="row" *ngIf="negocio.contraOfertaVendedor == null">
+                        <div class="row" *ngIf="negocio.contraOfertaVendedor == null && negocio.solicitudCompra.estadoNegociacion != 'RECHAZADA'">
                           <div class="col-6">
-                            <button type="submit" (click)="cancelarOferta()" class="btn btn-color-secundario">Cancelar oferta</button>
+                            <button type="submit" (click)="cancelarOferta()" class="btn btn-color-secundario">Cancelar oferta</button> 
                           </div>
                           <div class="col-6">
                             <button type="submit" (click)="negociar()" class="btn btn-color-primario">Negociar</button>

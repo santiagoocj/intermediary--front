@@ -1,16 +1,13 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
+      <img src="../../../assets/img/intermediary logo.png" width="70" [routerLink]="['/inicio']">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">¿Quienes Somos?</a>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Categorías</a>
+            <a class="nav-link dropdown-toggle" style="padding-left: 20px;" data-bs-toggle="dropdown" role="button" aria-expanded="false">Categorías</a>
             <div class="dropdown-menu" >
               <div *ngFor="let categoria of categorias">
                 <a class="dropdown-item" [routerLink]="['/inicio', categoria.categoria]">{{categoria.categoria}}</a>
@@ -19,8 +16,8 @@
           </li>
         </ul>
         <form class="d-flex" *ngIf="!auth.isAuthenticated()">
-            <button class="btn btn-color-secundario" type="button" [routerLink]="['/login']">Login</button>
-            <button class="btn btn-color-primario" type="button" [routerLink]="['/registro/empresa']">Sing Up</button>
+            <button class="btn btn-color-secundario" type="button" [routerLink]="['/login']">Iniciar sesión</button>
+            <button class="btn btn-color-primario" type="button" [routerLink]="['/registro/empresa']">Registro</button>
         </form>
         <div class="btn-group"  *ngIf="auth.isAuthenticated()">
           <button type="button" class="btn btn-color-primario dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
