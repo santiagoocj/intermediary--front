@@ -27,8 +27,9 @@ export class ProductoService {
     );
   }
 
-  listarTodosProductosActivos():Observable<any[]>{
-    return this.http.get<any[]>(environment.urlEndPoint + '/producto/activo');
+  listarTodosProductosActivos(page:number):Observable<any[]>{
+    return this.http.get<any[]>(environment.urlEndPoint + '/producto/activo/page/' + page
+    );
   }
 
   listarProductosPorCategoria(categoria: string):Observable<Producto[]>{

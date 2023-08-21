@@ -71,7 +71,7 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Email:</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="empresa.email" placeholder="Email de la empresa" name="email" required #email="ngModel" maxlength="20">
+        <input type="email" class="form-control" id="email" [(ngModel)]="empresa.email" placeholder="Email de la empresa" name="email" required #email="ngModel" maxlength="40">
         <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
           <div *ngIf="email.errors.required">
               El campo email es requerido

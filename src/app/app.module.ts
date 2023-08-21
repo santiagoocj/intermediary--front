@@ -23,6 +23,7 @@ import { MembresiaComponent } from './components/empresa/panel-empresa/membresia
 import { MembresiasValidarComponent } from './components/empresa/administrador/membresias/membresias-validar/membresias-validar.component';
 import { NegocioComponent } from './components/negocio/negocio/negocio.component';
 import { NegociacionesComponent } from './components/negocio/negociaciones/negociaciones.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NegociacionesComponent } from './components/negocio/negociaciones/negoc
     MembresiaComponent,
     MembresiasValidarComponent,
     NegocioComponent,
-    NegociacionesComponent
+    NegociacionesComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

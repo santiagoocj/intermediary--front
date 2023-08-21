@@ -15,6 +15,7 @@ import { NegocioComponent } from './components/negocio/negocio/negocio.component
 const routes: Routes = [
   {path: '', redirectTo: '/inicio', pathMatch: 'full'},
   {path: 'inicio', component: InicioComponent},
+  {path: 'producto/activo/page/:page',component: InicioComponent},
   {path: 'inicio/:categoria', component: InicioComponent},
   {path: 'registro/empresa', component: RegistroEmpresaComponent},
   {path: 'registro/representante/:id_registro', component: RepresentanteLegalComponent},

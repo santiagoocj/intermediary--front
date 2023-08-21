@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InicioComponent implements OnInit {
 
+  paginador: any;
   productos: Producto[] = [];
 
   constructor(private productoService: ProductoService, private activatedRoute: ActivatedRoute) { }
@@ -18,23 +19,33 @@ export class InicioComponent implements OnInit {
     let categoria: string = '';
     this.activatedRoute.params.subscribe(params => {
       categoria = params['categoria'];
+      let page: number = +params['page'];
+      if (!page){
+        page = 0;
+      }
+    this.seleccionarTipoBusquedaProductos(categoria, page);
     })
-    this.seleccionarTipoBusquedaProductos(categoria);
   }
 
-  seleccionarTipoBusquedaProductos(categoria: string){
+  seleccionarTipoBusquedaProductos(categoria: string, page: number){
     if(categoria == undefined){
-      this.listarProductos();
+      this.listarProductos(page);
     }else{ 
       this.listarProductosPorCategoria(categoria);
     }
   }
 
-  listarProductos(){
-    this.productoService.listarTodosProductosActivos().subscribe(productos => this.productos = productos);
+  listarProductos(page:number){
+    this.productoService.listarTodosProductosActivos(page).subscribe(productos => {
+      let response: any = productos;
+      this.productos = response.content as Producto[];
+      this.paginador = productos;
+    });
   }
 
   listarProductosPorCategoria(categoria: string){
-    this.productoService.listarProductosPorCategoria(categoria).subscribe(productosEncontrados => this.productos = productosEncontrados);
+    this.productoService.listarProductosPorCategoria(categoria).subscribe(productosEncontrados => {
+      this.productos = productosEncontrados as Producto[];
+    });
   }
 }
