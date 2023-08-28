@@ -53,12 +53,9 @@
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Tipo persona:</label>
-        <input type="text" class="form-control" id="tipoPersona" [(ngModel)]="empresa.tipoPersona" placeholder="Encargado de la empresa (Natural o jurídico)" name="tipoPersona" required #tipoPersona="ngModel" maxlength="20">
-        <div class="alert alert-danger" *ngIf="tipoPersona.invalid && (tipoPersona.dirty || tipoPersona.touched)">
-          <div *ngIf="tipoPersona.errors.required">
-              El campo tipo persona es requerido
-          </div>
-        </div>
+        <select class="form-control" name="tipoPersona" [(ngModel)]="empresa.tipoPersona" >
+          <option [value]="item" *ngFor="let item of tipoPersonas">{{item}}</option>
+        </select>
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Celular:</label>
@@ -78,7 +75,15 @@
           </div>
         </div>
       </div>
-   
-      <button class="btn btn-color-primario" role="button">Siguiente</button>
+      <div style="text-align: center; margin-left: 50px; margin-right: 50px;">
+        <p>
+          {{terminosYCondiciones}}
+        </p>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="aceptarTerminos" id="aceptarTerminosYCondiciones" name="example1">
+          <label class="custom-control-label" for="aceptarTerminosYCondiciones">Acepto términos y condiciones</label>
+        </div>
+      </div>
+      <button [disabled]="!aceptarTerminos" class="btn btn-color-primario" role="button">Siguiente</button>
     </form>
   </div>

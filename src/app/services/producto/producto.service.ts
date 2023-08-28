@@ -32,8 +32,8 @@ export class ProductoService {
     );
   }
 
-  listarProductosPorCategoria(categoria: string):Observable<Producto[]>{
-    return this.http.get<Producto[]>(environment.urlEndPoint + '/producto/categoria/' + categoria);
+  listarProductosPorCategoria(categoria: string, page:number):Observable<Producto[]>{
+    return this.http.get<Producto[]>(environment.urlEndPoint + '/producto/categoria/' + categoria + '/' + page);
   }
 
   listarProductos(idEmpresa :number):Observable<any[]>{

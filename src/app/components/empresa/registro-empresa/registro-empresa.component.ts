@@ -13,9 +13,10 @@ import { ConversorService } from 'src/app/services/util/conversor.service';
 export class RegistroEmpresaComponent implements OnInit {
 
   public tipoPersonas: String[] = ["Natural", "Jurídico"];
-
+  public aceptarTerminos: boolean = false;
   public empresa:RegistroEmpresa = new RegistroEmpresa();
   public registroEmpresa:string = 'Registro de la empresa';
+  public terminosYCondiciones:string = "Esta página web ofrece a los visitantes realizar comercio electrónico a través de ella. Al acceder o usar la página web de nuestro servicio, usted aprueba que haya leído, entendido y aceptado estar sujeto a estos Términos";
   previsualizacion: string;
   documentoAnexo:File;
 

@@ -31,7 +31,7 @@ export class InicioComponent implements OnInit {
     if(categoria == undefined){
       this.listarProductos(page);
     }else{ 
-      this.listarProductosPorCategoria(categoria);
+      this.listarProductosPorCategoria(categoria, page);
     }
   }
 
@@ -43,9 +43,11 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  listarProductosPorCategoria(categoria: string){
-    this.productoService.listarProductosPorCategoria(categoria).subscribe(productosEncontrados => {
-      this.productos = productosEncontrados as Producto[];
+  listarProductosPorCategoria(categoria: string, page:number){
+    this.productoService.listarProductosPorCategoria(categoria, page).subscribe(productosEncontrados => {
+      let response: any = productosEncontrados;
+      this.productos = response.content as Producto[];
+      this.paginador = productosEncontrados;
     });
   }
 }

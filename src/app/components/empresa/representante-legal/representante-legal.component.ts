@@ -14,7 +14,7 @@ export class RepresentanteLegalComponent implements OnInit {
 
   public registroRepresentante: string = 'Registro Representante';
   public representanteLegal: RepresentanteLegal = new RepresentanteLegal();
-
+  public tipoIdentificacion: String[] = ["CC", "NIT","Pasaporte"];
   private idRegistro: number;
 
   constructor(private representateService: RepresentanteService, 

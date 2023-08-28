@@ -4,12 +4,9 @@
     <form (ngSubmit)="crearRepresentante()">
       <div class="mb-3 mt-3">
         <label for="nit">Tipo documento:</label>
-        <input type="text" class="form-control" id="tipoDocumento" [(ngModel)]="representanteLegal.tipoDocumento" placeholder="Tipo de documento (CC)" name="tipoDocumento" required #tipoDocumento="ngModel">
-        <div class="alert alert-danger" *ngIf="tipoDocumento.invalid && (tipoDocumento.dirty || tipoDocumento.touched)">
-          <div *ngIf="tipoDocumento.errors.required">
-              El campo tipo documento es requerido
-          </div>
-        </div>
+        <select class="form-control" name="tipoDocumento" [(ngModel)]="representanteLegal.tipoDocumento" >
+          <option [value]="item" *ngFor="let item of tipoIdentificacion">{{item}}</option>
+        </select>
       </div>
       <div class="mb-3 mt-3">
         <label for="pwd">Documento:</label>
